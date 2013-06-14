@@ -1,4 +1,4 @@
-foundation
-==========
+정치성향 테스트
+===============
 
-Foundation 4.2.2 with no radius.
+비야르레알 님의 [정치성향 테스트](http://blog.naver.com/rerinelf/140191080136)를 웹앱으로 포팅했습니다.
