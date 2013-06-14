@@ -16,14 +16,28 @@ background: url(img/wavegrid.png);
 }
 body > .row {
     background: white;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
-    padding: 30px;
+    box-shadow: 0 0 50px rgba(32, 32, 32, 0.05);
+    padding: 2em;
 }
+
+#top-nav {
+    border-bottom: 1px solid rgb(192, 192, 192);
+}
+
+.sub-nav dd {
+    margin: 0 1.0em;
+}
+
+#see-result {
+    height: 40em;
+}
+
+
 </style>
 </head>
 <body>
 
-<section id="intro" class="row">
+<section data-magellan-destination="intro" id="intro" class="row">
 <div class="large-12 columns">
 <h1>정치성향 테스트</h1>
 <p>Version 3.0</p>
@@ -34,12 +48,22 @@ body > .row {
 <p>당신의 정치성향을 알게 해줄 3지 선택형 문제 80개가 준비되어 있습니다.<br>
 다음 질문을 보고 각 답변 중 한 가지를 선택해주세요.<br>
 문제는 총 80개이며 네 가지 분야 각각 20문항입니다.</p>
+
+<div id="top-nav" data-magellan-expedition="fixed">
+  <dl class="sub-nav">
+    <dd data-magellan-arrival="part1"><a href="#part1">분야 1. 계급의식성과 자유경쟁성</a></dd>
+    <dd data-magellan-arrival="part2"><a href="#part2">분야 2. 자유주의성과 공동체주의성</a></dd>
+    <dd data-magellan-arrival="part3"><a href="#part3">분야 3. 비권위성 및 일상성과 조직성 및 경제결정성</a></dd>
+    <dd data-magellan-arrival="part4"><a href="#part4">분야 4. 분배성과 보수성</a></dd>
+  </dl>
+</div>
+
 <p class="panel">편집자의 말: 답변의 논증 구조를 명확히 하기 위해 일부 문장의 논조와 순서를 바꾸고, 가치판단의 내용을 최대한 뺐습니다.<br>
     <a href="https://github.com/cyluss/politicalcompass/issues">여기</a>에서 편집 사항에 대해 이의를 제기하고 토론하실 수 있습니다.</p>
 </div>
 </section>
 
-<section id="part1" class="row">
+<section data-magellan-destination="part1" id="part1" class="row">
 <div class="large-12 columns">
 <h2>분야 1. 계급의식성과 자유경쟁성</h2>
 <h3 class="subheader">문항 1</h3>
@@ -272,7 +296,7 @@ body > .row {
 
 
 
-<section id="part2" class="row">
+<section data-magellan-destination="part2" id="part2" class="row">
 <div class="large-12 columns">
 <h2>분야 2. 자유주의성과 공동체주의성</h2>
 <h3 class="subheader">문항 21</h3>
@@ -500,7 +524,7 @@ body > .row {
 
 
 
-<section id="part3" class="row">
+<section data-magellan-destination="part3" id="part3" class="row">
 <div class="large-12 columns">
 <h2>분야 3. 비권위성 및 일상성과 조직성 및 경제결정성</h2>
 <h3 class="subheader">문항 41</h3>
@@ -745,7 +769,7 @@ body > .row {
 
 
 
-<section id="part4" class="row">
+<section data-magellan-destination="part4" id="part4" class="row">
 <div class="large-12 columns">
 <h2>분야 4. 분배성과 보수성</h2>
 <h3 class="subheader">문항 61</h3>
@@ -973,6 +997,19 @@ body > .row {
 </div>
 </div>
 </section>
+
+
+
+
+<section id="see-result" class="row">
+<div class="large-12 columns">
+    <h3 class="subheader">수고하셨습니다! 결과를 보시려면 아래에 있는 버튼을 누르세요.</h3>
+    <button class="large button expand">결과 보기</button>
+</div>
+</section>
+
+
+
 
 <script>
 document.write('<script src=' +
