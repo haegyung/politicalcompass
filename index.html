@@ -1,43 +1,15 @@
-<!DOCTYPE html xmlns:og='http://ogp.me/ns#'>
+<!DOCTYPE html>
 <!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="ko" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
 
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
-<title>정치성향 테스트 - Version 3.0-cyluss</title>
+<title>정치성향 테스트 - Version 3.0</title>
 <link rel="stylesheet" href="css/foundation.css" />
 <script src="js/vendor/custom.modernizr.js"></script>
-<style type="text/css">
-body {
-font-size: 0.95em;
-line-height: 161%;
-background: url(img/wavegrid.png);
-}
-body > .row {
-    background: white;
-    box-shadow: 0 0 50px rgba(32, 32, 32, 0.05);
-    padding: 2em;
-}
+<link rel="stylesheet" href="css/style.css" />
 
-#top-nav {
-    border-bottom: 1px solid rgb(192, 192, 192);
-}
-
-.sub-nav dd {
-    margin: 0 1.0em;
-}
-
-.powered-by {
-    text-align: right;
-}
-
-.powered-by ul {
-    float: right !important;
-}
-
-
-</style>
 </head>
 <body>
 
@@ -48,7 +20,7 @@ body > .row {
 
 <div class="row">
 <div class="large-4 columns">
-<p>Version 3.0-cyluss</p>
+<p>Version 3.0</p>
 <p>원저작자: 비야르레알 (<a href="http://blog.naver.com/rerinelf/140191080136">원문</a>)<br>
    페이지 저작자: cyluss</p>
 <p>이 페이지는 인터넷 익스플로러 9 이상과 크롬에서 잘 보입니다.</p>
@@ -73,10 +45,6 @@ body > .row {
     <dd data-magellan-arrival="part4"><a href="#part4">분야 4. 분배성과 보수성</a></dd>
   </dl>
 </div>
-
-<p class="panel"><strong>페이지 저작자의 말</strong><br>
-    답변의 논증 구조를 명확히 하기 위해 일부 문장의 논조와 순서를 바꾸고, 가치판단의 내용을 최대한 뺐습니다.<br>
-    <a href="https://github.com/cyluss/politicalcompass/issues">여기</a>에서 편집 사항에 대해 이의를 제기하고 토론하실 수 있습니다.</p>
 </div>
 </header>
 
@@ -87,9 +55,9 @@ body > .row {
 <div class="row">
 <div class="large-8 columns">
 <form class="custom">
-<label for="radio"><input name="radio" type="radio" id="radio" value="1" style="display:none;"><span class="custom radio"></span> 현대 사회에 계급이 명백히 존재한다.</label>
-<label for="radio"><input name="radio" type="radio" id="radio" value="2" style="display:none;"><span class="custom radio"></span> 현대 사회의 계층은 능력에 따라 획득한 것이다.</label>
-<label for="radio"><input name="radio" type="radio" id="radio" value="0" style="display:none;"><span class="custom radio"></span> 잘 모르겠다.</label>
+<label for="q01_1"><input name="q01" type="radio" id="q01_1" value="1" style="display:none;"><span class="custom radio"></span> 현대 사회에 계급이 명백히 존재한다.</label>
+<label for="q01_2"><input name="q01" type="radio" id="q01_2" value="2" style="display:none;"><span class="custom radio"></span> 현대 사회의 계층은 능력에 따라 획득한 것이다.</label>
+<label for="q01_0"><input name="q01" type="radio" id="q01_0" value="0" style="display:none;"><span class="custom radio"></span> 잘 모르겠다.</label>
 </form>
 </div>
 </div>
@@ -1021,14 +989,15 @@ body > .row {
 
 <footer class="row">
 <div class="large-6 columns">
-정치성향 테스트 Version 3.0-cyluss
+정치성향 테스트 Version 3.0
 </div>
 
 <div class="large-6 columns powered-by">
 <ul class="inline-list">
 <li class="header">powered by:</li>
-<li><a href="https://github.com/">Github</a></li>
+<li><a href="https://github.com">Github</a></li>
 <li><a href="http://foundation.zurb.com">Foundation</a></li>
+<li><a href="http://d3js.org">D3</a></li>
 </ul>
 </div>
 </footer>
@@ -1040,40 +1009,6 @@ document.write('<script src=' +
 </script>
 
 <script src="js/foundation.min.js"></script>
-<!--
-
-<script src="js/foundation/foundation.js"></script>
-
-<script src="js/foundation/foundation.interchange.js"></script>
-
-<script src="js/foundation/foundation.dropdown.js"></script>
-
-<script src="js/foundation/foundation.placeholder.js"></script>
-
-<script src="js/foundation/foundation.forms.js"></script>
-
-<script src="js/foundation/foundation.alerts.js"></script>
-
-<script src="js/foundation/foundation.magellan.js"></script>
-
-<script src="js/foundation/foundation.reveal.js"></script>
-
-<script src="js/foundation/foundation.tooltips.js"></script>
-
-<script src="js/foundation/foundation.clearing.js"></script>
-
-<script src="js/foundation/foundation.cookie.js"></script>
-
-<script src="js/foundation/foundation.joyride.js"></script>
-
-<script src="js/foundation/foundation.orbit.js"></script>
-
-<script src="js/foundation/foundation.section.js"></script>
-
-<script src="js/foundation/foundation.topbar.js"></script>
-
--->
-
 <script>
 $(document).foundation();
 </script>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--[if IE 8]>               <html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+
+<head>
+<meta charset="utf-8" />
+<title>정치성향 테스트 - Version 3.0</title>
+<link rel="stylesheet" href="css/foundation.css" />
+<script src="js/vendor/custom.modernizr.js"></script>
+<link rel="stylesheet" href="css/style.css" />
+
+</head>
+<body>
+
+<header id="intro" class="row">
+<div class="large-12 columns">
+
+<h1>정치성향 테스트</h1>
+<h2 class="subheader">결과 페이지</h2>
+<div class="row">
+<div class="large-4 columns">
+<p>Version 3.0</p>
+<p>원저작자: 비야르레알 (<a href="http://blog.naver.com/rerinelf/140191080136">원문</a>)<br>
+   페이지 저작자: cyluss</p>
+<p>이 페이지는 인터넷 익스플로러 9 이상과 크롬에서 잘 보입니다.</p>
+</div>
+<dl id="license" class="large-8 columns">
+<dt>저작자표시-비영리-동일조건변경허락</a></dt>
+<dd>이 라이선스는 원저작물의 저작자를 밝히고 2차 저작물에도 동일한 라이선스를 적용하는 한, 저작물을 비상업적 용도로 리믹스, 변형, 활용할 수 있도록 허락합니다.<br>
+    <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">자세히 읽기</a><br></dd>
+<dd><img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="CC BY-NC-SA" /></dd>
+</dl>
+</div>
+</header>
+
+<section class="row">
+<div id="graph-placeholder" class="large-12 columns">
+  <!--[if lte IE 8]><script src="r2d3.js" charset="utf-8"></script><![endif]-->
+  <!--[if gte IE 9]><!-->
+  <script src="js/d3/d3.v3.min.js" charset="utf-8"></script>
+  <!--<![endif]-->
+  <script type="text/javascript">
+  function draw(dataset) {
+  //Width and height
+      var w = 800;
+      var h = 600;
+      var padding = 50;
+
+      //Create scale functions
+      var xScale = d3.scale.linear()
+                 .domain([-20, 20])
+                 .range([2*padding, w - padding*2]);
+
+      var yScale = d3.scale.linear()
+                 .domain([-20, 20])
+                 .range([h - padding, padding]);
+
+      var rScale = d3.scale.linear()
+                 .domain([0, d3.max(dataset, function(d) { return d[1]; })])
+                 .range([2, 5]);
+
+      //Define X axis
+      var xAxis = d3.svg.axis()
+                .scale(xScale)
+                .orient("bottom")
+                .ticks(8);
+
+      //Define Y axis
+      var yAxis = d3.svg.axis()
+                .scale(yScale)
+                .orient("left")
+                .ticks(8);
+
+      //Create SVG element
+      var svg = d3.select("#graph-placeholder")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+      //Create circles
+      svg.selectAll("circle")
+         .data(dataset)
+         .enter()
+         .append("circle")
+         .attr("cx", function(d) {
+            return xScale(d[0]);
+         })
+         .attr("cy", function(d) {
+            return yScale(d[1]);
+         })
+         .attr("r", 5);
+
+
+      //Create labels
+      svg.selectAll("text")
+         .data(dataset)
+         .enter()
+         .append("text")
+         .text(function(d) {
+            return d[0] + "," + d[1];
+         })
+         .attr("x", function(d) {
+            return xScale(d[0]);
+         })
+         .attr("y", function(d) {
+            return yScale(d[1]);
+         })
+         .attr("font-family", "sans-serif")
+         .attr("font-size", "11px")
+         .attr("fill", "red");
+
+      //Create X axis
+      svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(0," + (h / 2) + ")")
+        .call(xAxis);
+
+      svg.append("text")
+        .attr("x", 20)
+        .attr("y", h/2+5)
+        .text("적자생존적");
+
+      svg.append("text")
+        .attr("x", w - padding/2 - 70)
+        .attr("y", h/2+5)
+        .text("계급의식화");
+
+      //Create Y axis
+      svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(" + w/ 2 + ",0)")
+        .call(yAxis);
+
+      svg.append("text")
+        .attr("x", (w-padding-30)/2)
+        .attr("y", padding/2)
+        .text("개인중시");
+
+      svg.append("text")
+        .attr("x", (w-padding-30)/2)
+        .attr("y", h-padding/2)
+        .text("사회중시");
+}
+
+function parseHashBangArgs(aURL) {
+
+  aURL = aURL || window.location.href;
+
+  var vars = {};
+  var hashes = aURL.slice(aURL.indexOf('#') + 2).split('&');
+
+    for(var i = 0; i < hashes.length; i++) {
+       var hash = hashes[i].split('=');
+
+       if(hash.length > 1) {
+         vars[hash[0]] = hash[1];
+       } else {
+        vars[hash[0]] = null;
+       }
+    }
+
+    return vars;
+}
+
+(function() {
+  var arg = parseHashBangArgs();
+  var dataset, x;
+  dataset = (function() {
+    var _i, _len, _ref, _results;
+    _ref = ["ul", "ur", "ll", "lr"];
+    _results = [];
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      x = _ref[_i];
+      _results.push(arg[x].split(','));
+    }
+    return _results;
+  })();
+
+  draw(dataset);
+})();
+</script>
+</div>
+</section>
+
+<footer class="row">
+<div class="large-6 columns">
+정치성향 테스트 Version 3.0
+</div>
+
+<div class="large-6 columns powered-by">
+<ul class="inline-list">
+<li class="header">powered by:</li>
+<li><a href="https://github.com">Github</a></li>
+<li><a href="http://foundation.zurb.com">Foundation</a></li>
+<li><a href="http://d3js.org">D3</a></li>
+</ul>
+</div>
+</footer>
+
+
+<script>
+document.write('<script src=' +
+('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+'.js><\/script>')
+</script>
+
+<script src="js/foundation.min.js"></script>
+<script>
+$(document).foundation();
+</script>
+
+</body>
+</html>
