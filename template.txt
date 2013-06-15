@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
-<title>정치성향 테스트 - Version 3.0</title>
+<title>정치성향 테스트 - Version 4.0</title>
 <link rel="stylesheet" href="css/foundation.css" />
 <script src="js/vendor/custom.modernizr.js"></script>
 <link rel="stylesheet" href="css/style.css" />
@@ -17,7 +17,7 @@
 <div class="large-12 columns">
 
 <h1>정치성향 테스트</h1>
-<p>Version 3.0</p>
+<p>Version 4.0</p>
 <p>당신의 정치성향을 알게 해줄 3지선택형 문항 80개가 준비되어 있습니다.<br>
 다음 질문을 보고 각 답변 중 한 가지를 선택해주세요. 문항은 총 80개이며 네 가지 분야 각각 20문항입니다.</p>
 
@@ -43,13 +43,17 @@
     <h2>{{ p.title }}</h2>
     {% for q in p.questions %}
         {% set qno = loop.index %}
-        <h3 class="subheader">문항 {{qno}}</h3>
+        <h3 class="subheader">논점 {{qno}}</h3>
         <div class="row">
         <div class="large-8 columns">
+            <p>주장 1. {{q.a}}</p>
+            <p>주장 2. {{q.b}}</p>
         <form class="custom">
-        <label for="p{{partno}}-q{{qno}}-1"><input name="p{{partno}}-q{{qno}}" type="radio" id="p{{partno}}-q{{qno}}-1" value="1" style="display:none;"><span class="custom radio"></span> {{q.a}}</label>
-        <label for="p{{partno}}-q{{qno}}-2"><input name="p{{partno}}-q{{qno}}" type="radio" id="p{{partno}}-q{{qno}}-2" value="2" style="display:none;"><span class="custom radio"></span> {{q.b}}</label>
-        <label for="p{{partno}}-q{{qno}}-0"><input name="p{{partno}}-q{{qno}}" type="radio" id="p{{partno}}-q{{qno}}-0" value="0" style="display:none;"><span class="custom radio"></span> 잘 모르겠다.</label>
+        <label for="p{{partno}}-q{{qno}}-a"><input name="p{{partno}}-q{{qno}}" type="radio" id="p{{partno}}-q{{qno}}-a" value="a" style="display:none;"><span class="custom radio"></span> 1번 적극 동의</label>
+        <label for="p{{partno}}-q{{qno}}-halfa"><input name="p{{partno}}-q{{qno}}" type="radio" id="p{{partno}}-q{{qno}}-halfa" value="0.5a" style="display:none;"><span class="custom radio"></span> 1번 약간 동의</label>
+        <label for="p{{partno}}-q{{qno}}-n"><input name="p{{partno}}-q{{qno}}" type="radio" id="p{{partno}}-q{{qno}}-n" value="0" style="display:none;"><span class="custom radio"></span> 잘 모르겠다.</label>
+        <label for="p{{partno}}-q{{qno}}-halfb"><input name="p{{partno}}-q{{qno}}" type="radio" id="p{{partno}}-q{{qno}}-halfb" value="0.5b" style="display:none;"><span class="custom radio"></span> 2번 약간 동의</label>
+        <label for="p{{partno}}-q{{qno}}-b"><input name="p{{partno}}-q{{qno}}" type="radio" id="p{{partno}}-q{{qno}}-b" value="b" style="display:none;"><span class="custom radio"></span> 2번 적극 동의</label>
         </form>
         </div>
         {% if q.dl %}
@@ -98,7 +102,7 @@
 
 <section>
 <div class="large-6 columns">
-정치성향 테스트 Version 3.0
+정치성향 테스트 Version 4.0
 </div>
 
 <div class="large-6 columns powered-by">
@@ -138,47 +142,57 @@ function set_count(node, cnt) {
 }
 
 function refresh() {
-    var a_a = agg_questions(1, 1);
-    var a_b = agg_questions(1, 2);
+    var a_a = agg_questions(1, 'a');
+    var a_halfa = agg_questions(1, '0.5a');
     var a_no = agg_questions(1, 0);
+    var a_halfb = agg_questions(1, '0.5b');
+    var a_b = agg_questions(1, 'b');
 
-    var a_cnt = a_a + a_b + a_no;
 
+    var a_cnt = a_a + a_halfa + a_no + a_halfb + a_b;
 
-    var b_a = agg_questions(2, 1);
-    var b_b = agg_questions(2, 2);
+    var b_a = agg_questions(2, 'a');
+    var b_halfa = agg_questions(2, '0.5a');
     var b_no = agg_questions(2, 0);
+    var b_halfb = agg_questions(2, '0.5b');
+    var b_b = agg_questions(2, 'b');
 
-    var b_cnt = b_a + b_b + b_no;
 
+    var b_cnt = b_a + b_halfa + b_no + b_halfb + b_b;
 
-    var c_a = agg_questions(3, 1);
-    var c_b = agg_questions(3, 2);
+    var c_a = agg_questions(3, 'a');
+    var c_halfa = agg_questions(3, '0.5a');
     var c_no = agg_questions(3, 0);
+    var c_halfb = agg_questions(3, '0.5b');
+    var c_b = agg_questions(3, 'b');
 
-    var c_cnt = c_a + c_b + c_no;
 
+    var c_cnt = c_a + c_halfa + c_no + c_halfb + c_b;
 
-    var d_a = agg_questions(4, 1);
-    var d_b = agg_questions(4, 2);
+    var d_a = agg_questions(4, 'a');
+    var d_halfa = agg_questions(4, '0.5a');
     var d_no = agg_questions(4, 0);
+    var d_halfb = agg_questions(4, '0.5b');
+    var d_b = agg_questions(4, 'b');
 
-    var d_cnt = d_a + d_b + d_no;
+
+    var d_cnt = d_a + d_halfa + d_no + d_halfb + d_b;
+
 
     function ul() {
-        return JSON.stringify([-a_a, c_a]);
+        return JSON.stringify([-(a_a + 0.5*a_halfa), (c_a + 0.5*c_halfa)]);
     }
 
     function ur() {
-        return JSON.stringify([a_b, b_a]);
+        return JSON.stringify([(a_b + 0.5 *a_halfb), (b_a + 0.5 * b_halfa)]);
     }
 
     function ll() {
-        return JSON.stringify([-d_a, -c_b]);
+        return JSON.stringify([-(d_a + d_halfa), -(c_b + c_halfb)]);
     }
 
     function lr() {
-        return JSON.stringify([d_b, -b_b]);
+        return JSON.stringify([(d_b + d_halfb), -(b_b + b_halfb)]);
     }
 
     function answeredCount() {
