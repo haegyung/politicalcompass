@@ -188,11 +188,11 @@ function refresh() {
     }
 
     function ll() {
-        return JSON.stringify([-(d_a + d_halfa), -(c_b + c_halfb)]);
+        return JSON.stringify([-(d_a + 0.5*d_halfa), -(c_b + 0.5*c_halfb)]);
     }
 
     function lr() {
-        return JSON.stringify([(d_b + d_halfb), -(b_b + b_halfb)]);
+        return JSON.stringify([(d_b + 0.5*d_halfb), -(b_b + 0.5*b_halfb)]);
     }
 
     function answeredCount() {
