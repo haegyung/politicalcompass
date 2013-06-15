@@ -11,7 +11,13 @@ body {
 body > .row {
     background: white;
     box-shadow: 0px 0px 15px -9px #333;
-    padding: 3em 6em;
+    padding: 1em 2em;
+}
+
+@media only screen and (min-width: 768px) {
+    body > .row {
+        padding: 3em 6em;
+    }
 }
 
 .sub-nav.large-11 {
@@ -44,7 +50,6 @@ body > .row {
 .axis line {
     fill: none;
     stroke: #ccc;
-    shape-rendering: crispEdges;
 }
 
 .axis text {

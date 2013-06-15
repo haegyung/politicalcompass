@@ -20,196 +20,56 @@
 </div></header>
 
 <section class="row">
-<div id="graph-placeholder" class="large-12 columns">
-  <h2 class="subheader">결과 페이지</h2>
+<div class="large-12 columns">
+  <div id="graph-placeholder">
+  <h2 class="subheader">결과 그래프</h2>
   <!--[if lte IE 8]><script src="r2d3.js" charset="utf-8"></script><![endif]-->
   <!--[if gte IE 9]><!-->
   <script src="js/d3/d3.v3.min.js" charset="utf-8"></script>
   <script src="js/underscore/underscore-min.js" charset="utf-8"></script>
   <!--<![endif]-->
-  <script type="text/javascript">
-  function draw(dataset) {
-  //Width and height
-      var w = 800;
-      var h = 600;
-      var padding = 50;
-
-      //Create scale functions
-      var xScale = d3.scale.linear()
-                 .domain([-20, 20])
-                 .range([2*padding, w - padding*2]);
-
-      var yScale = d3.scale.linear()
-                 .domain([-20, 20])
-                 .range([h - padding, padding]);
-
-      var rScale = d3.scale.linear()
-                 .domain([0, d3.max(dataset, function(d) { return d[1]; })])
-                 .range([2, 5]);
-
-      //Define X axis
-      var xAxis = d3.svg.axis()
-                .scale(xScale)
-                .orient("bottom")
-                .ticks(20);
-
-      //Define Y axis
-      var yAxis = d3.svg.axis()
-                .scale(yScale)
-                .orient("left")
-                .ticks(20);
-
-      //Create SVG element
-      var svg = d3.select("#graph-placeholder")
-            .append("svg")
-            .attr("width", w)
-            .attr("height", h);
-
-      var line = d3.svg.line()
-                  .x(function(d) { return xScale(d[0]); })
-                  .y(function(d) { return yScale(d[1]); })
-
-      svg.append("path").attr("d", line([dataset[0], dataset[1]]))
-                        .attr("stroke", "#556270")
-                        .attr("fill", "none");
-
-      svg.append("path").attr("d", line([dataset[1], dataset[3]]))
-                        .attr("stroke", "#FF6B6B")
-                        .attr("fill", "none");
-
-      svg.append("path").attr("d", line([dataset[3], dataset[2]]))
-                        .attr("stroke", "#4ECDC4")
-                        .attr("fill", "none");
-
-      svg.append("path").attr("d", line([dataset[2], dataset[0]]))
-                        .attr("stroke", "#C44D58")
-                        .attr("fill", "none");
-
-      //Create circles
-      svg.selectAll("circle")
-         .data(dataset)
-         .enter()
-         .append("circle")
-         .attr("cx", function(d) {
-            return xScale(d[0]);
-         })
-         .attr("cy", function(d) {
-            return yScale(d[1]);
-         })
-         .attr("r", 3)
-         .attr("fill", "#888");
-
-
-      //Create labels
-      svg.selectAll("text")
-         .data(dataset)
-         .enter()
-         .append("text")
-         .text(function(d) {
-            return d[0] + "," + d[1];
-         })
-         .attr("x", function(d) {
-            return xScale(d[0])+5;
-         })
-         .attr("y", function(d) {
-            return yScale(d[1])-5;
-         })
-         .attr("font-family", "sans-serif")
-         .attr("font-size", "0.8em")
-         .attr("fill", "#777");
-
-      //Create X axis
-      svg.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(0," + (h / 2) + ")")
-        .attr("fill", "#777")
-        .call(xAxis);
-
-      svg.append("text")
-        .attr("x", 20)
-        .attr("y", h/2+5)
-        .attr("fill", "#777")
-        .text("계급의식화");
-
-      svg.append("text")
-        .attr("x", w - padding/2 - 70)
-        .attr("y", h/2+5)
-        .attr("fill", "#777")
-        .text("적자생존적");
-
-      //Create Y axis
-      svg.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(" + w/ 2 + ",0)")
-        .attr("fill", "#777")
-        .call(yAxis);
-
-      svg.append("text")
-        .attr("x", (w-padding-30)/2)
-        .attr("y", padding/2)
-        .attr("fill", "#777")
-        .text("개인중시");
-
-      svg.append("text")
-        .attr("x", (w-padding-30)/2)
-        .attr("y", h-padding/2)
-        .attr("fill", "#777")
-        .text("사회중시");
-}
-
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(document.location);
-    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-
-var arg, arglist, parsePairFromArgument, v;
-
-parsePairFromArgument = function(arg) {
-  try {
-    return JSON.parse("[" + arg + "]");
-  } catch (_error) {
-    return [];
-  }
-};
-
-arglist = (function() {
-  var _i, _len, _ref, _results;
-  _ref = ["ul", "ur", "ll", "lr"];
-  _results = [];
-  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-    arg = _ref[_i];
-    _results.push(parsePairFromArgument(getParameterByName(arg)));
-  }
-  return _results;
-})();
-
-v = _.every(arglist, function(pair) {
-  return pair.length === 2;
-});
-
-if (v) {
-  draw(arglist);
-} else {
-
-}
-
-/*
-parsePairFromArgument = (arg) ->
-  try
-    JSON.parse("[" + arg + "]")
-  catch
-    []
-
-arglist = (parsePairFromArgument getParameterByName arg for arg in ["ul", "ur", "ll", "lr"])
-v = _.every arglist, (pair) -> pair.length == 2
-if v
-  draw arglist
-*/
-
-</script>
+  <script src="js/result.js" charset="utf-8"></script>
+  </div>
 </div>
+</section>
+
+<section class="row">
+
+<div class="large-6 columns">
+<h3 class="subheader">문항 분야별 해설</h3>
+<p>
+4가지 항목중 첫번째는 '얼마나 계급의식화를 하는지?', '얼마나 적자생존관을 가지고 있는지' 알아보는 분야였습니다.
+두번째는 '얼마나 자유주의적인지', '얼마나 보수적인지' 알아보는 분야였습니다.
+세번째는 '얼마나 비권위적'인지, '조직지향적인지' 알아보는 분야였습니다.
+네번째는 '얼마나 급진적인지', '온건적'인지 알아보는 분야였습니다.
+</p>
+
+<p>
+두가지 질문을 읽으면서 테스트가 매우 극단적인 듯한 인상을 받았을 것입니다.
+이런 극단적 선택이 정확한 정치성향을 알아볼 수 있게 합니다.
+한편, 자신이 선호하지 않는 정치적 입장 중에서도 어느 하나만을 택하여야만 했는데,
+그것은 자신의 정치적 스펙트럼이 얼마나 넓은지 혹은 정치적 협상이 가능한 선이 어느정도인지 알기 위했기 때문입니다.
+</p>
+</div>
+
+<div class="large-6 columns">
+<h3 class="subheader">결과 해석하기</h3>
+<p>
+대개 네가지 부분(좌상, 우상, 좌하, 우하)에 네개의 꼭지점들이 위치되고 그것을 이은 사각형이 만들어질 것입니다.
+네 가지 부분 중 가장 넓은 부분이 자신의 정치적 성향에 가장 가까운 부분입니다.
+좌상 부분이 가장 넓다면 좌파 자유주의자, 우상 부분이 가장 넓다면 우파 자유주의자입니다.
+좌하 부분이 가장 넓다면 좌파 사회주의자, 우하 부분이 가장 넓다면 우파 보수주의자입니다.
+</p>
+
+<p>
+기준점 0으로부터 가장 멀리 떨어져있는 꼭지점에 위치한 사상은 자신이 이상향으로 꼽을만한 정치관입니다.
+두번째, 세번째, 네번째 넓이의 부분으로 갈수록 자신의 정치적 신념과 타협하기 어려워집니다.</p>
+
+<p>다만 중심을 기준으로 상하좌우 4칸 안에 자신의 사각형이 거의 포함되면 정치적성향이 옅은 '중도'입니다.</p>
+
+<p>자세한 풀이를 보시려면 <a href="http://blog.naver.com/rerinelf/140191215502">여기</a>를 누르세요.</p>
+</div>
+
 </section>
 
 <footer class="row">
