@@ -1,3 +1,7 @@
+* {
+    font-family: Helvetica, Arial, AppleGothic, 'Malgun Gothic', sans-serif !important;
+}
+
 body {
     font-size: 0.95em;
     line-height: 161%;
@@ -6,8 +10,8 @@ body {
 
 body > .row {
     background: white;
-    box-shadow: 0 0 20px rgba(64, 64, 64, 0.08);
-    padding: 2em;
+    box-shadow: 0px 0px 15px -9px #333;
+    padding: 3em 6em;
 }
 
 .sub-nav.large-11 {
@@ -39,11 +43,11 @@ body > .row {
 .axis path,
 .axis line {
     fill: none;
-    stroke: black;
+    stroke: #ccc;
     shape-rendering: crispEdges;
 }
 
 .axis text {
     font-family: sans-serif;
-    font-size: 11px;
+    font-size: 0.8em;
 }

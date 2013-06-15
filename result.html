@@ -16,8 +16,8 @@
 <div class="large-12 columns">
 <h1>정치성향 테스트</h1>
 <p>Version 3.0</p>
-</div>
-</header>
+<a href="index.html">테스트하기</a>
+</div></header>
 
 <section class="row">
 <div id="graph-placeholder" class="large-12 columns">
@@ -65,6 +65,26 @@
             .attr("width", w)
             .attr("height", h);
 
+      var line = d3.svg.line()
+                  .x(function(d) { return xScale(d[0]); })
+                  .y(function(d) { return yScale(d[1]); })
+
+      svg.append("path").attr("d", line([dataset[0], dataset[1]]))
+                        .attr("stroke", "#556270")
+                        .attr("fill", "none");
+
+      svg.append("path").attr("d", line([dataset[1], dataset[3]]))
+                        .attr("stroke", "#FF6B6B")
+                        .attr("fill", "none");
+
+      svg.append("path").attr("d", line([dataset[3], dataset[2]]))
+                        .attr("stroke", "#4ECDC4")
+                        .attr("fill", "none");
+
+      svg.append("path").attr("d", line([dataset[2], dataset[0]]))
+                        .attr("stroke", "#C44D58")
+                        .attr("fill", "none");
+
       //Create circles
       svg.selectAll("circle")
          .data(dataset)
@@ -76,7 +96,8 @@
          .attr("cy", function(d) {
             return yScale(d[1]);
          })
-         .attr("r", 5);
+         .attr("r", 3)
+         .attr("fill", "#888");
 
 
       //Create labels
@@ -88,45 +109,51 @@
             return d[0] + "," + d[1];
          })
          .attr("x", function(d) {
-            return xScale(d[0]);
+            return xScale(d[0])+5;
          })
          .attr("y", function(d) {
-            return yScale(d[1]);
+            return yScale(d[1])-5;
          })
          .attr("font-family", "sans-serif")
-         .attr("font-size", "11px")
-         .attr("fill", "red");
+         .attr("font-size", "0.8em")
+         .attr("fill", "#777");
 
       //Create X axis
       svg.append("g")
         .attr("class", "axis")
         .attr("transform", "translate(0," + (h / 2) + ")")
+        .attr("fill", "#777")
         .call(xAxis);
 
       svg.append("text")
         .attr("x", 20)
         .attr("y", h/2+5)
+        .attr("fill", "#777")
         .text("계급의식화");
 
       svg.append("text")
         .attr("x", w - padding/2 - 70)
         .attr("y", h/2+5)
+        .attr("fill", "#777")
         .text("적자생존적");
 
       //Create Y axis
       svg.append("g")
         .attr("class", "axis")
         .attr("transform", "translate(" + w/ 2 + ",0)")
+        .attr("fill", "#777")
         .call(yAxis);
 
       svg.append("text")
         .attr("x", (w-padding-30)/2)
         .attr("y", padding/2)
+        .attr("fill", "#777")
         .text("개인중시");
 
       svg.append("text")
         .attr("x", (w-padding-30)/2)
         .attr("y", h-padding/2)
+        .attr("fill", "#777")
         .text("사회중시");
 }
 
@@ -185,7 +212,8 @@ if v
 </div>
 </section>
 
-<section class="row">
+<footer class="row">
+<section>
 <div class="large-4 columns">
 <p>원저작자: 비야르레알 (<a href="http://blog.naver.com/rerinelf/140191080136">원문</a>)<br>
    페이지 저작자: cyluss</p>
@@ -199,7 +227,8 @@ if v
 </dl>
 </section>
 
-<footer class="row">
+
+<section>
 <div class="large-6 columns">
 정치성향 테스트 Version 3.0
 </div>
@@ -212,6 +241,7 @@ if v
 <li><a href="http://d3js.org">D3</a></li>
 </ul>
 </div>
+</section>
 </footer>
 
 
