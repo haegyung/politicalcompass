@@ -196,7 +196,7 @@ function draw(dataset) {
 
       svg.append("text")
          .text("다문화주의")
-         .attr("x", xScale(-1))
+         .attr("x", xScale(-1.5))
          .attr("y", yScale(18))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
@@ -204,7 +204,7 @@ function draw(dataset) {
 
       svg.append("text")
          .text("자유지상주의")
-         .attr("x", xScale(11))
+         .attr("x", xScale(10))
          .attr("y", yScale(18))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
@@ -212,8 +212,8 @@ function draw(dataset) {
 
 
       svg.append("text")
-         .text("신마르크주의")
-         .attr("x", xScale(-20))
+         .text("신마르크스주의")
+         .attr("x", xScale(-21))
          .attr("y", yScale(8))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.6em")
@@ -221,7 +221,7 @@ function draw(dataset) {
 
       svg.append("text")
          .text("신좌파")
-         .attr("x", xScale(-13))
+         .attr("x", xScale(-13.5))
          .attr("y", yScale(8))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
@@ -229,7 +229,7 @@ function draw(dataset) {
 
       svg.append("text")
          .text("시민단체론")
-         .attr("x", xScale(-6))
+         .attr("x", xScale(-6.5))
          .attr("y", yScale(14))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
@@ -237,7 +237,7 @@ function draw(dataset) {
 
       svg.append("text")
          .text("제 3의 길")
-         .attr("x", xScale(-5.5))
+         .attr("x", xScale(-6))
          .attr("y", yScale(6))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
@@ -245,7 +245,7 @@ function draw(dataset) {
 
       svg.append("text")
          .text("사회자유주의")
-         .attr("x", xScale(0.5))
+         .attr("x", xScale(0))
          .attr("y", yScale(9))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
@@ -253,7 +253,7 @@ function draw(dataset) {
 
       svg.append("text")
          .text("자유보수주의")
-         .attr("x", xScale(7))
+         .attr("x", xScale(6.5))
          .attr("y", yScale(9))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
@@ -261,7 +261,7 @@ function draw(dataset) {
 
       svg.append("text")
          .text("신자유주의")
-         .attr("x", xScale(14.5))
+         .attr("x", xScale(14))
          .attr("y", yScale(9))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
@@ -272,7 +272,7 @@ function draw(dataset) {
          .attr("x", xScale(-20))
          .attr("y", yScale(-8))
          .attr("font-family", "sans-serif")
-         .attr("font-size", "0.8em")
+         .attr("font-size", "0.6em")
          .attr("fill", "#666");
 
       svg.append("text")
@@ -285,15 +285,15 @@ function draw(dataset) {
 
       svg.append("text")
          .text("사회보수주의")
-         .attr("x", xScale(4))
+         .attr("x", xScale(3.5))
          .attr("y", yScale(-4))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
          .attr("fill", "#666");
 
       svg.append("text")
-         .text("코포라티즘")
-         .attr("x", xScale(-2))
+         .text("협동조합주의")
+         .attr("x", xScale(-3))
          .attr("y", yScale(-13))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
@@ -301,7 +301,7 @@ function draw(dataset) {
 
       svg.append("text")
          .text("민족보수주의")
-         .attr("x", xScale(5))
+         .attr("x", xScale(4.5))
          .attr("y", yScale(-13))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
@@ -309,14 +309,14 @@ function draw(dataset) {
 
       svg.append("text")
          .text("신보수주의")
-         .attr("x", xScale(14.5))
+         .attr("x", xScale(14))
          .attr("y", yScale(-8))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
          .attr("fill", "#666");
 
       svg.append("text")
-         .text("유러커뮤니즘")
+         .text("유럽공산주의")
          .attr("x", xScale(-16))
          .attr("y", yScale(-16))
          .attr("font-family", "sans-serif")
@@ -333,7 +333,7 @@ function draw(dataset) {
 
       svg.append("text")
          .text("국가사회주의")
-         .attr("x", xScale(-2.5))
+         .attr("x", xScale(-1.5))
          .attr("y", yScale(-18.8))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
@@ -341,7 +341,7 @@ function draw(dataset) {
 
       svg.append("text")
          .text("파시즘")
-         .attr("x", xScale(14))
+         .attr("x", xScale(13.5))
          .attr("y", yScale(-18.8))
          .attr("font-family", "sans-serif")
          .attr("font-size", "0.8em")
