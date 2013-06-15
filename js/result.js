@@ -292,7 +292,7 @@ function draw(dataset) {
          .attr("fill", "#666");
 
       svg.append("text")
-         .text("협동조합주의")
+         .text("코포라티즘")
          .attr("x", xScale(-3))
          .attr("y", yScale(-13))
          .attr("font-family", "sans-serif")
