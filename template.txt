@@ -76,6 +76,7 @@
     <input type="hidden" name="lr" value="" />
     <input type="submit" disabled="disabled" class="large button expand" value="결과 보기" />
     </form>
+    <p>테스트를 이용하실 때 불편하신 점이 있으신가요? <a href="http://blog.naver.com/cylussss/10170428069">여기</a>에 의견을 남겨주세요.</p>
 </div>
 </section>
 
@@ -83,7 +84,7 @@
 <section>
 <div class="large-4 columns">
 <p>원저작자: 비야르레알 (<a href="http://blog.naver.com/rerinelf/140191080136">원문</a>)<br>
-   페이지 저작자: cyluss</p>
+   페이지 제작자: cyluss (<a href="http://blog.naver.com/cylussss">블로그</a>)</p>
 <p>이 페이지는 인터넷 익스플로러 9 이상과 크롬에서 잘 보입니다.</p>
 </div>
 <dl id="license" class="large-8 columns">
