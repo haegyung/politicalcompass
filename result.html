@@ -38,6 +38,7 @@
   <!--[if lte IE 8]><script src="r2d3.js" charset="utf-8"></script><![endif]-->
   <!--[if gte IE 9]><!-->
   <script src="js/d3/d3.v3.min.js" charset="utf-8"></script>
+  <script src="js/underscore/underscore-min.js" charset="utf-8"></script>
   <!--<![endif]-->
   <script type="text/javascript">
   function draw(dataset) {
@@ -63,13 +64,13 @@
       var xAxis = d3.svg.axis()
                 .scale(xScale)
                 .orient("bottom")
-                .ticks(8);
+                .ticks(20);
 
       //Define Y axis
       var yAxis = d3.svg.axis()
                 .scale(yScale)
                 .orient("left")
-                .ticks(8);
+                .ticks(20);
 
       //Create SVG element
       var svg = d3.select("#graph-placeholder")
@@ -118,12 +119,12 @@
       svg.append("text")
         .attr("x", 20)
         .attr("y", h/2+5)
-        .text("적자생존적");
+        .text("계급의식화");
 
       svg.append("text")
         .attr("x", w - padding/2 - 70)
         .attr("y", h/2+5)
-        .text("계급의식화");
+        .text("적자생존적");
 
       //Create Y axis
       svg.append("g")
@@ -142,42 +143,57 @@
         .text("사회중시");
 }
 
-function parseHashBangArgs(aURL) {
-
-  aURL = aURL || window.location.href;
-
-  var vars = {};
-  var hashes = aURL.slice(aURL.indexOf('#') + 2).split('&');
-
-    for(var i = 0; i < hashes.length; i++) {
-       var hash = hashes[i].split('=');
-
-       if(hash.length > 1) {
-         vars[hash[0]] = hash[1];
-       } else {
-        vars[hash[0]] = null;
-       }
-    }
-
-    return vars;
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(document.location);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-(function() {
-  var arg = parseHashBangArgs();
-  var dataset, x;
-  dataset = (function() {
-    var _i, _len, _ref, _results;
-    _ref = ["ul", "ur", "ll", "lr"];
-    _results = [];
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      x = _ref[_i];
-      _results.push(arg[x].split(','));
-    }
-    return _results;
-  })();
+var arg, arglist, parsePairFromArgument, v;
 
-  draw(dataset);
+parsePairFromArgument = function(arg) {
+  try {
+    return JSON.parse("[" + arg + "]");
+  } catch (_error) {
+    return [];
+  }
+};
+
+arglist = (function() {
+  var _i, _len, _ref, _results;
+  _ref = ["ul", "ur", "ll", "lr"];
+  _results = [];
+  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    arg = _ref[_i];
+    _results.push(parsePairFromArgument(getParameterByName(arg)));
+  }
+  return _results;
 })();
+
+v = _.every(arglist, function(pair) {
+  return pair.length === 2;
+});
+
+if (v) {
+  draw(arglist);
+} else {
+
+}
+
+/*
+parsePairFromArgument = (arg) ->
+  try
+    JSON.parse("[" + arg + "]")
+  catch
+    []
+
+arglist = (parsePairFromArgument getParameterByName arg for arg in ["ul", "ur", "ll", "lr"])
+v = _.every arglist, (pair) -> pair.length == 2
+if v
+  draw arglist
+*/
+
 </script>
 </div>
 </section>

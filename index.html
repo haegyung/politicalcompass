@@ -38,18 +38,22 @@
 다음 질문을 보고 각 답변 중 한 가지를 선택해주세요. 문항은 총 80개이며 네 가지 분야 각각 20문항입니다.</p>
 
 <div id="top-nav" data-magellan-expedition="fixed">
-  <dl class="sub-nav">
-    
-    <dd data-magellan-arrival="part1"><a href="#part1">분야1. 계급의식성과 자유경쟁성</a></dd>
-    
-    <dd data-magellan-arrival="part2"><a href="#part2">분야2. 자유주의성과 공동체주의성</a></dd>
-    
-    <dd data-magellan-arrival="part3"><a href="#part3">분야3. 비권위성 및 일상성과 조직성 및 경제결정성</a></dd>
-    
-    <dd data-magellan-arrival="part4"><a href="#part4">분야4. 분배성과 보수성</a></dd>
-    
-  </dl>
-</div>
+    <div class="row">
+      <dl class="sub-nav large-11 columns">
+        
+        <dd data-magellan-arrival="part1" class="part1"><a href="#part1">분야1. 계급의식성과 자유경쟁성</a> <span class="round secondary label"></span></dd>
+        
+        <dd data-magellan-arrival="part2" class="part2"><a href="#part2">분야2. 자유주의성과 공동체주의성</a> <span class="round secondary label"></span></dd>
+        
+        <dd data-magellan-arrival="part3" class="part3"><a href="#part3">분야3. 비권위성 및 일상성과 조직성 및 경제결정성</a> <span class="round secondary label"></span></dd>
+        
+        <dd data-magellan-arrival="part4" class="part4"><a href="#part4">분야4. 분배성과 보수성</a> <span class="round secondary label"></span></dd>
+        
+      </dl>
+      <div class="large-1 columns see-result">
+        <button class="small button expand">결과 보기</button>
+      </div>
+    </div>
 </div>
 </header>
 
@@ -991,8 +995,8 @@
         
         <dl class="large-4 columns">
             
-            <dt></dt>
-            <dd></dd>
+            <dt>로빈후드세(금융거래세)</dt>
+            <dd>외환거래에 세금을 매기는 토빈세와 달리, 모든 금융거래에 대한 세금</dd>
             
         </dl>
         
@@ -1158,10 +1162,16 @@
     </section>
 
 
-<section id="see-result" class="row">
+<section class="row see-result">
 <div class="large-12 columns">
     <h3 class="subheader">수고하셨습니다! 결과를 보시려면 아래에 있는 버튼을 누르세요.</h3>
-    <button disabled="disabled" class="large button expand">결과 보기</button>
+    <form action="result.html" method="get">
+    <input type="hidden" name="ul" value=""/>
+    <input type="hidden" name="ur" value=""/>
+    <input type="hidden" name="ll" value=""/>
+    <input type="hidden" name="lr" value=""/>
+    <input type="submit" disabled="disabled" class="large button expand" value="결과 보기"></input>
+    </form>
 </div>
 </section>
 
@@ -1185,10 +1195,100 @@ document.write('<script src=' +
 ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
 '.js><\/script>')
 </script>
-
 <script src="js/foundation.min.js"></script>
+<script src="js/underscore/underscore-min.js" charset="utf-8"></script>
 <script>
 $(document).foundation();
+
+function agg_questions(partno, value) {
+    return _.filter($("#part"+partno+" input[type='radio'][value='"+value+"']"), function(e) { return e.checked; }).length;
+}
+
+function set_count(node, cnt) {
+    if (cnt === 0) {
+        node.removeClass("secondary");
+        node.addClass("success");
+    } else {
+        node.addClass("secondary");
+        node.removeClass("success");
+    }
+    node.text(cnt);
+}
+
+function refresh() {
+    var a_a = agg_questions(1, 1);
+    var a_b = agg_questions(1, 2);
+    var a_no = agg_questions(1, 0);
+
+    var a_cnt = a_a + a_b + a_no;
+
+
+    var b_a = agg_questions(2, 1);
+    var b_b = agg_questions(2, 2);
+    var b_no = agg_questions(2, 0);
+
+    var b_cnt = b_a + b_b + b_no;
+
+
+    var c_a = agg_questions(3, 1);
+    var c_b = agg_questions(3, 2);
+    var c_no = agg_questions(3, 0);
+
+    var c_cnt = c_a + c_b + c_no;
+
+
+    var d_a = agg_questions(4, 1);
+    var d_b = agg_questions(4, 2);
+    var d_no = agg_questions(4, 0);
+
+    var d_cnt = d_a + d_b + d_no;
+
+    function ul() {
+        return JSON.stringify([-a_a, c_a]);
+    }
+
+    function ur() {
+        return JSON.stringify([a_b, b_a]);
+    }
+
+    function ll() {
+        return JSON.stringify([-d_a, -b_b]);
+    }
+
+    function lr() {
+        return JSON.stringify([d_b, -c_b]);
+    }
+
+    function answeredCount() {
+        return a_cnt + b_cnt + c_cnt + d_cnt;
+    }
+
+    function refreshResultButton(button) {
+        button.attr("disabled", (answeredCount() === 80 ? null : "disabled"));
+    }
+
+    function refreshForm() {
+        function stripAndSet(target, value) {
+            return target.attr('value', value.substring(1, value.length-1));
+        }
+        stripAndSet($(".see-result form input[type='hidden'][name='ul']"), ul());
+        stripAndSet($(".see-result form input[type='hidden'][name='ur']"), ur());
+        stripAndSet($(".see-result form input[type='hidden'][name='ll']"), ll());
+        stripAndSet($(".see-result form input[type='hidden'][name='lr']"), lr());
+    }
+
+    refreshResultButton($(".see-result button, .see-result input[type='submit']"));
+    refreshForm();
+
+    set_count($("#top-nav .part1 span"), 20 - a_cnt);
+    set_count($("#top-nav .part2 span"), 20 - b_cnt);
+    set_count($("#top-nav .part3 span"), 20 - c_cnt);
+    set_count($("#top-nav .part4 span"), 20 - d_cnt);
+}
+
+$("input[type='radio']").change(refresh);
+refresh();
+
 </script>
 </body>
 </html>
