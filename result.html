@@ -12,6 +12,9 @@
 </head>
 <body>
 
+<div class="notice panel"><strong>페이지 제작자의 한마디: </strong> '산업화'는 정중히 사양합니다.</div>
+
+
 <header id="intro" class="row">
 <div class="large-12 columns">
 <h1>정치성향 테스트</h1>
@@ -134,6 +137,9 @@ document.write('<script src=' +
 <script>
 $(document).foundation();
 $(".link input[type='text']").val(document.location.toString());
+setTimeout(function () {
+$(".notice").fadeOut(500);
+}, 10000);
 </script>
 
 </body>

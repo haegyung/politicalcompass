@@ -13,6 +13,8 @@
 </head>
 <body>
 
+<div class="notice panel"><strong>페이지 제작자의 한마디: </strong> '산업화'는 정중히 사양합니다.</div>
+
 <header data-magellan-destination="intro" id="intro" class="row">
 <div class="large-12 columns">
 
@@ -1632,6 +1634,11 @@ refresh();
 $(".see-result button").click(function () {
     $(".see-result form").submit();
 });
+
+setTimeout(function () {
+$(".notice").fadeOut(500);
+}, 10000);
+
 
 </script>
 </body>

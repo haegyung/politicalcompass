@@ -46,6 +46,10 @@ body > .row {
     margin: 0 auto;
 }
 
+.notice {
+    text-align: center;
+}
+
 .axis path,
 .axis line {
     fill: none;
