@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<div class="notice panel"><strong>페이지 제작자의 한마디: </strong> '산업화'는 정중히 사양합니다.</div>
+<div class="notice panel"><strong>페이지 제작자의 한마디: </strong> 정치성향 테스트는 어떠한 접속 기록도 서버에 저장하지 않습니다.</div>
 
 <header data-magellan-destination="intro" id="intro" class="row">
 <div class="large-12 columns">
