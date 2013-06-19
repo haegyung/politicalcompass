@@ -72,12 +72,12 @@ function draw(dataset) {
 
 
       svg.append("path").attr("d", line([[-20, 0], [20, 0]]))
-                        .attr("stroke", "#eee")
+                        .attr("stroke", "#ddd")
                         .attr("fill", "none");
 
 
       svg.append("path").attr("d", line([[0, -20], [0, 20]]))
-                        .attr("stroke", "#eee")
+                        .attr("stroke", "#ddd")
                         .attr("fill", "none");
 
 
@@ -86,84 +86,84 @@ function draw(dataset) {
 
       // vertical line section
       svg.append("path").attr("d", line([[-13, 20], [-13, 17]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       svg.append("path").attr("d", line([[-4, 20], [-4, 17]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       svg.append("path").attr("d", line([[6, 20], [6, 0]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       // horizontal line section
       svg.append("path").attr("d", line([[-20, 17], [20, 17]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       // vertical line section
       svg.append("path").attr("d", line([[-16, 17], [-16, -14]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       svg.append("path").attr("d", line([[-8, 17], [-8, 0]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       svg.append("path").attr("d", line([[13, 17], [13, -17]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       // horizontal line section
       svg.append("path").attr("d", line([[-8, 12], [0, 12]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
 
       // below y = 0
       // horizontal line section
       svg.append("path").attr("d", line([[-2, -8], [13, -8]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       // vertical line section
       svg.append("path").attr("d", line([[-2, -8], [-2, -17]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       svg.append("path").attr("d", line([[2, -8], [2, -17]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       // horizontal line section
       svg.append("path").attr("d", line([[-20, -14], [-7, -14]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
 
       // vertical line section
       svg.append("path").attr("d", line([[-7, -14], [-7, -20]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       // horizontal line section
       svg.append("path").attr("d", line([[-20, -17], [-10, -17]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       svg.append("path").attr("d", line([[-7, -17], [20, -17]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
 
       // vertical line section
       svg.append("path").attr("d", line([[-10, -17], [-10, -20]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
       svg.append("path").attr("d", line([[10, -17], [10, -20]]))
-                        .attr("stroke", "#ddd")
+                        .attr("stroke", "#ccc")
                         .attr("fill", "none");
 
 
