@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<div class="notice panel"><strong>페이지 제작자의 한마디: </strong> 정치성향 테스트는 어떠한 접속 기록도 서버에 저장하지 않습니다.</div>
+<div class="notice panel"><strong>페이지 제작자의 한마디: </strong> 이 테스트는 객관적이지 않고 편향되어 보일 수 있습니다.</div>
 
 <header data-magellan-destination="intro" id="intro" class="row">
 <div class="large-12 columns">
